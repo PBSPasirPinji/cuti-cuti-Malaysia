@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Jom Cuti — Discover Malaysia, Plan Your Way</title>
+<meta name="description" content="Jom Cuti helps you discover Malaysia's best destinations, plan itineraries, and travel smarter." />
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌴</text></svg>" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<!-- ============================================================
+     SVG ICON SPRITE (hidden) — referenced everywhere via <use>
+     ============================================================ -->
+<svg style="display:none" aria-hidden="true">
+  <symbol id="icon-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></symbol>
+  <symbol id="icon-heart" viewBox="0 0 24 24"><path d="M12 21s-7.5-4.6-10-9.3C.5 8 2 4 6 4c2 0 3.5 1 4 2.5C10.5 5 12 4 14 4c4 0 5.5 4 4 7.7C19.5 16.4 12 21 12 21z"/></symbol>
+  <symbol id="icon-menu" viewBox="0 0 24 24"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></symbol>
+  <symbol id="icon-close" viewBox="0 0 24 24"><line x1="5" y1="5" x2="19" y2="19"/><line x1="19" y1="5" x2="5" y2="19"/></symbol>
+  <symbol id="icon-chevron-down" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></symbol>
+  <symbol id="icon-chevron-up" viewBox="0 0 24 24"><polyline points="6 15 12 9 18 15"/></symbol>
+  <symbol id="icon-plus" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></symbol>
+  <symbol id="icon-minus" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/></symbol>
+  <symbol id="icon-edit" viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></symbol>
+  <symbol id="icon-trash" viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6"/><path d="M14 11v6"/><path d="M9 6V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/></symbol>
+  <symbol id="icon-check" viewBox="0 0 24 24"><polyline points="4 12 9 17 20 6"/></symbol>
+  <symbol id="icon-star" viewBox="0 0 24 24"><polygon points="12 2 15 9 22 9.5 17 14.5 18.5 22 12 18 5.5 22 7 14.5 2 9.5 9 9"/></symbol>
+  <symbol id="icon-map-pin" viewBox="0 0 24 24"><path d="M12 21s-7-6.5-7-11a7 7 0 0 1 14 0c0 4.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></symbol>
+  <symbol id="icon-calendar" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><line x1="3" y1="10" x2="21" y2="10"/><line x1="8" y1="3" x2="8" y2="7"/><line x1="16" y1="3" x2="16" y2="7"/></symbol>
+  <symbol id="icon-phone" viewBox="0 0 24 24"><path d="M22 16.9v2a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3A19.5 19.5 0 0 1 5 12.1a19.8 19.8 0 0 1-3-8.7A2 2 0 0 1 4 1.4h2a2 2 0 0 1 2 1.7c.1 1 .3 2 .6 3a2 2 0 0 1-.5 2.1L6.9 9.4a16 16 0 0 0 6.7 6.7l1.2-1.2a2 2 0 0 1 2.1-.5c1 .3 2 .5 3 .6a2 2 0 0 1 1.7 2z"/></symbol>
+  <symbol id="icon-mail" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2 6 12 13 22 6"/></symbol>
+  <symbol id="icon-arrow-right" viewBox="0 0 24 24"><line x1="4" y1="12" x2="20" y2="12"/><polyline points="14 6 20 12 14 18"/></symbol>
+  <symbol id="icon-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><line x1="12" y1="11" x2="12" y2="16"/><circle cx="12" cy="7.5" r="0.6" fill="currentColor" stroke="none"/></symbol>
+  <symbol id="icon-shield" viewBox="0 0 24 24"><path d="M12 2 4 5v6c0 5 3.4 8.5 8 11 4.6-2.5 8-6 8-11V5z"/></symbol>
+  <symbol id="icon-wifi" viewBox="0 0 24 24"><path d="M2 8.5a16 16 0 0 1 20 0"/><path d="M5.5 12.5a11 11 0 0 1 13 0"/><path d="M8.8 16.3a6 6 0 0 1 6.4 0"/><circle cx="12" cy="19.5" r="1" fill="currentColor" stroke="none"/></symbol>
+  <symbol id="icon-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4.5"/><line x1="12" y1="2" x2="12" y2="5"/><line x1="12" y1="19" x2="12" y2="22"/><line x1="2" y1="12" x2="5" y2="12"/><line x1="19" y1="12" x2="22" y2="12"/><line x1="4.6" y1="4.6" x2="6.7" y2="6.7"/><line x1="17.3" y1="17.3" x2="19.4" y2="19.4"/><line x1="4.6" y1="19.4" x2="6.7" y2="17.3"/><line x1="17.3" y1="6.7" x2="19.4" y2="4.6"/></symbol>
+  <symbol id="icon-chat" viewBox="0 0 24 24"><path d="M21 11.5a8.4 8.4 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.4 8.4 0 0 1-3.8-.9L3 21l1.9-5.7a8.4 8.4 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.4 8.4 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8z"/></symbol>
+  <symbol id="icon-wallet" viewBox="0 0 24 24"><path d="M3 7a2 2 0 0 1 2-2h13a1 1 0 0 1 1 1v3H5a2 2 0 0 1-2-2z"/><path d="M3 7v11a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V10a1 1 0 0 0-1-1H6a2 2 0 0 1-2-2"/><circle cx="16.5" cy="14.5" r="1.2" fill="currentColor" stroke="none"/></symbol>
+  <symbol id="icon-food" viewBox="0 0 24 24"><path d="M4 8h13v6a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5z"/><path d="M17 9h1.5a2.5 2.5 0 0 1 0 5H17"/><line x1="7" y1="2" x2="7" y2="4"/><line x1="10.5" y1="2" x2="10.5" y2="4"/></symbol>
+  <symbol id="icon-nature" viewBox="0 0 24 24"><path d="M6 20C4 12 8 4 20 4c0 12-8 16-14 16z"/><path d="M6 20c2-6 5-9 10-12"/></symbol>
+  <symbol id="icon-beach" viewBox="0 0 24 24"><path d="M12 3a9 9 0 0 1 9 9H3a9 9 0 0 1 9-9z"/><line x1="12" y1="3" x2="12" y2="21"/><path d="M10 21a2 2 0 0 0 2-2"/></symbol>
+  <symbol id="icon-culture" viewBox="0 0 24 24"><polygon points="12 2 21 9 3 9"/><line x1="5" y1="9" x2="5" y2="21"/><line x1="19" y1="9" x2="19" y2="21"/><line x1="3" y1="21" x2="21" y2="21"/><line x1="9" y1="12" x2="9" y2="21"/><line x1="15" y1="12" x2="15" y2="21"/></symbol>
+  <symbol id="icon-adventure" viewBox="0 0 24 24"><path d="M3 20l6-11 4 6 3-4 5 9z"/></symbol>
+  <symbol id="icon-family" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><path d="M3 20c0-3.5 2.7-6 6-6s6 2.5 6 6"/><circle cx="17" cy="9" r="2.3"/><path d="M15.5 14c2.7 0 5 2 5.3 5"/></symbol>
+</svg>
+
+<!-- ============================================================
+     HEADER / NAVIGATION
+     ============================================================ -->
+<header class="site-header" id="siteHeader">
+  <div class="container header-inner">
+    <a href="#home" class="logo" data-page="home">
+      <span class="logo-mark">🌴</span>
+      <span class="logo-text">Jom Cuti</span>
+    </a>
+
+    <nav class="main-nav" id="mainNav">
+      <a href="#home" class="nav-link" data-page="home">Home</a>
+      <a href="#destinations" class="nav-link" data-page="destinations">Destinations</a>
+      <a href="#things-to-do" class="nav-link" data-page="things-to-do">Things To Do</a>
+      <a href="#recommendations" class="nav-link" data-page="recommendations">Recommendations</a>
+      <a href="#itinerary" class="nav-link" data-page="itinerary">Itinerary Planner</a>
+      <a href="#about" class="nav-link" data-page="about">About</a>
+      <a href="#contact" class="nav-link" data-page="contact">Contact</a>
+    </nav>
+
+    <div class="header-actions">
+      <button class="icon-btn" id="favouritesBtn" aria-label="View favourites" title="Favourites">
+        <svg class="icon"><use href="#icon-heart"/></svg>
+        <span class="badge" id="favouritesCount">0</span>
+      </button>
+      <button class="icon-btn nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+        <svg class="icon"><use href="#icon-menu"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="mainContent">
+
+  <!-- ============================================================
+       PAGE: HOME
+       ============================================================ -->
+  <section class="page" id="page-home" data-page-section="home">
+
+    <div class="hero">
+      <div class="hero-decor" aria-hidden="true">
+        <span class="hero-blob blob-1"></span>
+        <span class="hero-blob blob-2"></span>
+        <span class="hero-blob blob-3"></span>
+      </div>
+      <div class="container hero-content">
+        <p class="eyebrow">Malaysia, uncrowded and unpacked</p>
+        <h1 id="heroHeadline">Jom, Let's Cuti! 🌴</h1>
+        <p class="hero-sub" id="heroSubheadline">Discover Malaysia's beaches, rainforests, heritage cities and street food — then build an itinerary that's entirely yours.</p>
+
+        <form class="search-bar" id="heroSearchForm" role="search">
+          <svg class="icon"><use href="#icon-search"/></svg>
+          <input type="text" id="heroSearchInput" placeholder="Search destinations, states, or things to do…" aria-label="Search" autocomplete="off" />
+          <button type="submit" class="btn btn-primary">Search</button>
+        </form>
+
+        <div class="hero-stats">
+          <div class="hero-stat"><strong id="statDestinations">12</strong><span>Destinations</span></div>
+          <div class="hero-stat"><strong id="statStates">12</strong><span>States Covered</span></div>
+          <div class="hero-stat"><strong>6</strong><span>Activity Categories</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+
+      <div class="section-heading">
+        <div>
+          <p class="section-kicker">Fan favourites</p>
+          <h2>Popular Destinations</h2>
+        </div>
+        <a href="#destinations" class="link-more" data-page="destinations">View all <svg class="icon icon-sm"><use href="#icon-arrow-right"/></svg></a>
+      </div>
+      <div class="card-grid" id="popularDestinationsGrid"></div>
+
+      <div class="section-heading">
+        <div>
+          <p class="section-kicker">Pick your vibe</p>
+          <h2>Things To Do</h2>
+        </div>
+        <a href="#things-to-do" class="link-more" data-page="things-to-do">Explore all <svg class="icon icon-sm"><use href="#icon-arrow-right"/></svg></a>
+      </div>
+      <div class="category-grid" id="thingsToDoPreview"></div>
+
+      <div class="section-heading">
+        <div>
+          <p class="section-kicker">Not sure where to start?</p>
+          <h2>Recommended Itineraries</h2>
+        </div>
+        <a href="#recommendations" class="link-more" data-page="recommendations">See all trips <svg class="icon icon-sm"><use href="#icon-arrow-right"/></svg></a>
+      </div>
+      <div class="recommend-grid" id="recommendationsPreview"></div>
+
+      <div class="section-heading">
+        <div>
+          <p class="section-kicker">Before you go</p>
+          <h2>Travel Tips</h2>
+        </div>
+      </div>
+      <div class="tips-grid" id="travelTipsPreview"></div>
+
+    </div>
+  </section>
+
+  <!-- ============================================================
+       PAGE: DESTINATIONS
+       ============================================================ -->
+  <section class="page" id="page-destinations" data-page-section="destinations">
+    <div class="container">
+      <div class="page-header">
+        <p class="section-kicker">12 destinations across Malaysia</p>
+        <h1>Destinations</h1>
+        <p class="page-lead">Filter by state, region or the kind of trip you're after.</p>
+      </div>
+
+      <div class="filter-bar" id="destinationFilterBar">
+        <div class="filter-search">
+          <svg class="icon"><use href="#icon-search"/></svg>
+          <input type="text" id="destSearchInput" placeholder="Search destinations…" autocomplete="off" />
+        </div>
+        <select id="destRegionFilter">
+          <option value="">All Regions</option>
+        </select>
+        <select id="destStateFilter">
+          <option value="">All States</option>
+        </select>
+        <select id="destSort">
+          <option value="rating">Sort: Top Rated</option>
+          <option value="name">Sort: Name A–Z</option>
+          <option value="days">Sort: Suggested Days</option>
+        </select>
+        <label class="toggle-chip">
+          <input type="checkbox" id="destFavOnly" />
+          <svg class="icon icon-sm"><use href="#icon-heart"/></svg> Favourites only
+        </label>
+      </div>
+
+      <div class="category-pills" id="destCategoryFilters"></div>
+
+      <p class="results-count"><span id="destResultsCount">12</span> destinations found</p>
+
+      <div class="card-grid" id="destinationsGrid"></div>
+      <p class="empty-state hidden" id="destinationsEmpty">No destinations match your filters yet — try clearing one or two.</p>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       PAGE: THINGS TO DO
+       ============================================================ -->
+  <section class="page" id="page-things-to-do" data-page-section="things-to-do">
+    <div class="container">
+      <div class="page-header">
+        <p class="section-kicker">Six ways to spend your days</p>
+        <h1>Things To Do</h1>
+        <p class="page-lead">Every activity links back to the destination that offers it.</p>
+      </div>
+
+      <div class="tab-bar" id="thingsTabBar"></div>
+      <div id="thingsToDoContent"></div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       PAGE: TRAVEL RECOMMENDATIONS
+       ============================================================ -->
+  <section class="page" id="page-recommendations" data-page-section="recommendations">
+    <div class="container">
+      <div class="page-header">
+        <p class="section-kicker">Curated by trip length &amp; budget</p>
+        <h1>Travel Recommendations</h1>
+        <p class="page-lead">Tell us how long you have and how you like to travel — we'll suggest a route.</p>
+      </div>
+
+      <div class="filter-bar">
+        <select id="recDurationFilter">
+          <option value="">Any Duration</option>
+          <option value="weekend">Weekend (2–3 days)</option>
+          <option value="week">One Week (4–7 days)</option>
+          <option value="twoweeks">Two Weeks+ (8–14 days)</option>
+        </select>
+        <select id="recStyleFilter">
+          <option value="">Any Style</option>
+          <option value="budget">Budget</option>
+          <option value="midrange">Mid-range</option>
+          <option value="luxury">Luxury</option>
+        </select>
+      </div>
+
+      <p class="results-count"><span id="recResultsCount">8</span> recommended trips</p>
+      <div class="recommend-grid" id="recommendationsGrid"></div>
+      <p class="empty-state hidden" id="recommendationsEmpty">No trips match those filters — try widening your search.</p>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       PAGE: ITINERARY PLANNER
+       ============================================================ -->
+  <section class="page" id="page-itinerary" data-page-section="itinerary">
+    <div class="container">
+      <div class="page-header">
+        <p class="section-kicker">Build it, tweak it, keep it</p>
+        <h1>Itinerary Planner</h1>
+        <p class="page-lead">Pick a destination and number of days — we'll generate a starting plan you can fully customise.</p>
+      </div>
+
+      <div class="planner-controls">
+        <div class="field">
+          <label for="itinDestinationSelect">Destination</label>
+          <select id="itinDestinationSelect"></select>
+        </div>
+        <div class="field">
+          <label for="itinDaysInput">Number of days</label>
+          <input type="number" id="itinDaysInput" min="1" max="14" value="3" />
+        </div>
+        <button class="btn btn-primary" id="itinGenerateBtn">
+          <svg class="icon icon-sm"><use href="#icon-calendar"/></svg> Generate Itinerary
+        </button>
+      </div>
+
+      <div class="planner-toolbar hidden" id="plannerToolbar">
+        <span id="plannerSummary"></span>
+        <div class="planner-toolbar-actions">
+          <button class="btn btn-ghost" id="itinSaveBtn"><svg class="icon icon-sm"><use href="#icon-check"/></svg> Save Itinerary</button>
+          <button class="btn btn-ghost" id="itinResetBtn"><svg class="icon icon-sm"><use href="#icon-trash"/></svg> Reset</button>
+        </div>
+      </div>
+
+      <div id="itinResultContainer"></div>
+      <p class="empty-state" id="itinEmptyState">Choose a destination and click <strong>Generate Itinerary</strong> to get started — or your last saved itinerary will appear here automatically.</p>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       PAGE: ABOUT
+       ============================================================ -->
+  <section class="page" id="page-about" data-page-section="about">
+    <div class="container narrow">
+      <div class="page-header">
+        <p class="section-kicker">Our story</p>
+        <h1>About Jom Cuti</h1>
+      </div>
+
+      <div class="about-content">
+        <p class="lead-paragraph" id="aboutIntro">Jom Cuti helps you discover Malaysia's best destinations, plan the perfect itinerary, and travel like a local — from the streets of Penang to the reefs of Perhentian.</p>
+
+        <p>"Jom cuti" is Malaysian slang for "let's go on holiday" — and that's exactly the feeling we built this site around. Malaysia packs an enormous amount of variety into one country: hawker food that rivals any capital's fine dining, rainforest older than the Amazon, beaches on two different seas, and a genuine mix of Malay, Chinese, Indian and indigenous Bornean culture in almost every town.</p>
+
+        <p>We built Jom Cuti because planning a trip that does all of that justice usually means twenty browser tabs and a half-finished spreadsheet. Instead, we've organised every destination, activity and itinerary idea in one place, and built a planner that turns "I have 5 days and no plan" into a real day-by-day trip in a few clicks.</p>
+
+        <div class="about-grid">
+          <div class="about-card">
+            <svg class="icon icon-lg"><use href="#icon-map-pin"/></svg>
+            <h3>Locally researched</h3>
+            <p>Every destination and activity is chosen for what actually makes a trip memorable, not just what's popular on a map.</p>
+          </div>
+          <div class="about-card">
+            <svg class="icon icon-lg"><use href="#icon-calendar"/></svg>
+            <h3>Built to be planned</h3>
+            <p>Our itinerary planner lets you generate, edit, reorder and save a real day-by-day plan — not just a wishlist.</p>
+          </div>
+          <div class="about-card">
+            <svg class="icon icon-lg"><use href="#icon-heart"/></svg>
+            <h3>Made with love, lah</h3>
+            <p>We're a small team of Malaysian travellers who wanted the guide we wished we'd had on our own trips.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       PAGE: CONTACT
+       ============================================================ -->
+  <section class="page" id="page-contact" data-page-section="contact">
+    <div class="container">
+      <div class="page-header">
+        <p class="section-kicker">We'd love to hear from you</p>
+        <h1>Contact Us</h1>
+      </div>
+
+      <div class="contact-grid">
+        <div class="contact-info" id="contactInfoBlock"></div>
+
+        <form class="contact-form" id="contactForm" novalidate>
+          <h2>Send us a message</h2>
+          <div class="field">
+            <label for="contactName">Name</label>
+            <input type="text" id="contactName" name="name" required />
+            <span class="field-error" id="contactNameError"></span>
+          </div>
+          <div class="field">
+            <label for="contactEmail">Email</label>
+            <input type="email" id="contactEmail" name="email" required />
+            <span class="field-error" id="contactEmailError"></span>
+          </div>
+          <div class="field">
+            <label for="contactSubject">Subject</label>
+            <input type="text" id="contactSubject" name="subject" required />
+            <span class="field-error" id="contactSubjectError"></span>
+          </div>
+          <div class="field">
+            <label for="contactMessage">Message</label>
+            <textarea id="contactMessage" name="message" rows="5" required></textarea>
+            <span class="field-error" id="contactMessageError"></span>
+          </div>
+          <button type="submit" class="btn btn-primary btn-block">Send Message</button>
+          <div class="form-status hidden" id="contactFormStatus"></div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============================================================
+     DESTINATION DETAIL MODAL
+     ============================================================ -->
+<div class="modal-overlay hidden" id="destinationModal">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalDestName">
+    <button class="modal-close" id="modalCloseBtn" aria-label="Close"><svg class="icon"><use href="#icon-close"/></svg></button>
+    <div id="modalBody"></div>
+  </div>
+</div>
+
+<!-- ============================================================
+     TOASTS
+     ============================================================ -->
+<div class="toast-container" id="toastContainer" aria-live="polite"></div>
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      <a href="#home" class="logo" data-page="home">
+        <span class="logo-mark">🌴</span>
+        <span class="logo-text">Jom Cuti</span>
+      </a>
+      <p id="footerTagline">Your Malaysia, Your Way</p>
+    </div>
+
+    <div class="footer-col">
+      <h4>Explore</h4>
+      <a href="#destinations" data-page="destinations">Destinations</a>
+      <a href="#things-to-do" data-page="things-to-do">Things To Do</a>
+      <a href="#recommendations" data-page="recommendations">Recommendations</a>
+      <a href="#itinerary" data-page="itinerary">Itinerary Planner</a>
+    </div>
+
+    <div class="footer-col">
+      <h4>Company</h4>
+      <a href="#about" data-page="about">About</a>
+      <a href="#contact" data-page="contact">Contact</a>
+    </div>
+
+    <div class="footer-col" id="footerContactBlock">
+      <h4>Get in touch</h4>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="container footer-bottom-inner">
+      <p>© <span id="currentYear"></span> Jom Cuti. Made with 🌴 in Malaysia.</p>
+      <div class="footer-social" id="footerSocialLinks"></div>
+    </div>
+  </div>
+</footer>
+
+<script src="content.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
